@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "537521927554",
+    "project_id": "todo-app-95dc8",
+    "storage_bucket": "todo-app-95dc8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:537521927554:android:54c4fe40623737a9f54b9b",
+        "android_client_info": {
+          "package_name": "com.nazalapp.todoapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "537521927554-p3facn5r7erufr2t3nflmj6ba7bhpngc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB8OBhDYlyDMMEhFIBNMLkO2y6yNH12ssg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "537521927554-p3facn5r7erufr2t3nflmj6ba7bhpngc.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "537521927554-8rjc4j7s8lmusmjo486rm4j1hj3m14ao.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.nazalapp.todoapp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
