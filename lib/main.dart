@@ -1,6 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:todoapp/pages/home.dart';
+
 import 'package:todoapp/pages/splash.dart';
 
 void main() async {
