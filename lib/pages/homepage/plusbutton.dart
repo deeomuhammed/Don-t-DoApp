@@ -11,13 +11,16 @@ class PlusButton extends StatelessWidget {
     return Container(
       height: 75,
       width: 75,
-      decoration: BoxDecoration(
-        color: Colors.black,
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(begin: Alignment.topLeft, colors: [
+          Color.fromARGB(255, 1, 67, 75),
+          Color.fromARGB(255, 0, 151, 167),
+        ]),
         shape: BoxShape.circle,
       ),
       child: Center(
         child: TextButton(
-          child: Text(
+          child: const Text(
             '+',
             style: TextStyle(color: Colors.white, fontSize: 25),
           ),
@@ -28,23 +31,28 @@ class PlusButton extends StatelessWidget {
                   return AlertDialog(
                     title: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text('Add what not to do'),
+                      children: const [
+                        Text(
+                          'Add what not to do',
+                          style:
+                              TextStyle(color: Color.fromARGB(255, 1, 67, 75)),
+                        ),
                         SizedBox(
                           height: 8,
                         )
                       ],
                     ),
                     content: TextField(
-                      cursorColor: Colors.black,
+                      cursorColor: const Color.fromARGB(255, 1, 67, 75),
                       decoration: InputDecoration(
                         hintText: '  Type here...',
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(25.0),
                         ),
                         focusedBorder: OutlineInputBorder(
-                          borderSide:
-                              const BorderSide(color: Colors.black, width: 2.0),
+                          borderSide: const BorderSide(
+                              color: Color.fromARGB(255, 1, 67, 75),
+                              width: 2.0),
                           borderRadius: BorderRadius.circular(25.0),
                         ),
                       ),
@@ -66,10 +74,10 @@ class PlusButton extends StatelessWidget {
                           dontdo.clear();
                           Navigator.pop(context);
                         },
-                        child: Text('Submit'),
+                        child: const Text('Submit'),
                         style: ButtonStyle(
-                            backgroundColor:
-                                MaterialStateProperty.all(Colors.black)),
+                            backgroundColor: MaterialStateProperty.all(
+                                const Color.fromARGB(255, 1, 67, 75))),
                       )
                     ],
                   );

@@ -14,13 +14,13 @@ class AddThings extends StatefulWidget {
 }
 
 class _AddThingsState extends State<AddThings> {
-  static int c = 0;
+  static int c = 1;
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Color.fromARGB(255, 228, 226, 226),
+        backgroundColor: const Color.fromARGB(255, 0, 172, 193).withOpacity(.2),
         body: Padding(
           padding: const EdgeInsets.all(25),
           child: Column(
@@ -34,21 +34,27 @@ class _AddThingsState extends State<AddThings> {
                         return Setting();
                       }));
                     },
-                    icon: Icon(Icons.settings),
+                    icon: const Icon(
+                      Icons.settings,
+                      color: Color.fromARGB(255, 1, 67, 75),
+                    ),
                   )
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 2,
               ),
-              Text('Don\'t  do  ',
+              const Text('Don\'t  do  ',
                   style: TextStyle(
-                      fontFamily: 'rh', fontSize: 30, color: Colors.black)),
-              SizedBox(
+                    fontFamily: 'rh',
+                    fontSize: 30,
+                    color: Color.fromARGB(255, 1, 67, 75),
+                  )),
+              const SizedBox(
                 height: 9,
               ),
-              TopCard(status: c),
-              SizedBox(
+              TopCard(),
+              const SizedBox(
                 height: 10,
               ),
               Expanded(
@@ -56,17 +62,17 @@ class _AddThingsState extends State<AddThings> {
                     stream: FirebaseFirestore.instance
                         .collection('Todos')
                         .snapshots(),
-                    builder: (ctx, Snapshot) {
-                      if (!Snapshot.hasData) {
-                        return Center(child: CircularProgressIndicator());
+                    builder: (ctx, snapshot) {
+                      if (!snapshot.hasData) {
+                        return const Center(child: CircularProgressIndicator());
                       } else {
                         return ListView(
-                          children: Snapshot.data!.docs.map((e) {
+                          children: snapshot.data!.docs.map((e) {
                             return Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Slidable(
                                   startActionPane: ActionPane(
-                                      motion: DrawerMotion(),
+                                      motion: const DrawerMotion(),
                                       children: [
                                         SlidableAction(
                                           onPressed: (context) {
@@ -74,7 +80,7 @@ class _AddThingsState extends State<AddThings> {
                                                 context: context,
                                                 builder: (ct) {
                                                   return AlertDialog(
-                                                    title: Text(
+                                                    title: const Text(
                                                         'Do you want to Delete this? '),
                                                     actions: [
                                                       ElevatedButton(
@@ -93,7 +99,8 @@ class _AddThingsState extends State<AddThings> {
                                                             Navigator.of(ct)
                                                                 .pop();
                                                           },
-                                                          child: Text('yes')),
+                                                          child: const Text(
+                                                              'yes')),
                                                       ElevatedButton(
                                                         style: ButtonStyle(
                                                             backgroundColor:
@@ -104,16 +111,15 @@ class _AddThingsState extends State<AddThings> {
                                                           Navigator.of(ctx)
                                                               .pop();
                                                         },
-                                                        child: Text('No'),
+                                                        child: const Text('No'),
                                                       ),
                                                     ],
                                                   );
                                                 });
                                           },
-                                          backgroundColor: Color.fromARGB(
-                                              255, 228, 226, 226),
-                                          foregroundColor:
-                                              Color.fromARGB(255, 238, 19, 4),
+                                          backgroundColor: Colors.transparent,
+                                          foregroundColor: const Color.fromARGB(
+                                              255, 238, 19, 4),
                                           icon: Icons.delete,
                                           label: 'Delete',
                                         ),
@@ -131,7 +137,7 @@ class _AddThingsState extends State<AddThings> {
                       }
                     }),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               PlusButton()

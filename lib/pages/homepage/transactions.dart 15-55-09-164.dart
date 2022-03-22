@@ -19,20 +19,19 @@ class Lists extends StatefulWidget {
 }
 
 class _ListsState extends State<Lists> {
-  Color bla = Colors.red;
-  Color re = Colors.black;
   bool checkColor = true;
   String text1 = 'Did you do this';
 
   @override
   Widget build(BuildContext co) {
     return Card(
+      elevation: 3,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
       child: Padding(
         padding: const EdgeInsets.all(5),
         child: ListTile(
           trailing: IconButton(
-              icon: Icon(
+              icon: const Icon(
                 FontAwesomeIcons.question,
                 color: Colors.white,
                 size: 20,
@@ -46,11 +45,11 @@ class _ListsState extends State<Lists> {
                           ElevatedButton(
                               style: ButtonStyle(
                                   backgroundColor: MaterialStateProperty.all(
-                                      Color.fromARGB(255, 0, 0, 0))),
+                                const Color.fromARGB(255, 1, 67, 75),
+                              )),
                               onPressed: () {
                                 setState(() {
                                   checkColor = !checkColor;
-                                  print(checkColor);
 
                                   if (checkColor == true) {
                                     FirebaseFirestore.instance
@@ -72,26 +71,32 @@ class _ListsState extends State<Lists> {
                                 });
                                 Navigator.of(ctx).pop();
                               },
-                              child: Text('YES')),
+                              child: const Text('YES')),
                           ElevatedButton(
                             style: ButtonStyle(
-                                backgroundColor:
-                                    MaterialStateProperty.all(Colors.black)),
+                                backgroundColor: MaterialStateProperty.all(
+                              const Color.fromARGB(255, 1, 67, 75),
+                            )),
                             onPressed: () {
                               Navigator.of(ctx).pop();
                             },
-                            child: Text('NO'),
+                            child: const Text('NO'),
                           ),
                         ],
-                        title: Text(widget.co == 'NO'
-                            ? 'Did you Recover this?'
-                            : 'Did you do this'),
+                        title: Text(
+                          widget.co == 'NO'
+                              ? 'Did you Recover this?'
+                              : 'Did you do this',
+                          style: const TextStyle(
+                            color: Color.fromARGB(255, 1, 67, 75),
+                          ),
+                        ),
                       );
                     });
               }),
           title: Text(
             widget.listName,
-            style: TextStyle(
+            style: const TextStyle(
                 color: Colors.white,
                 fontSize: 17,
                 fontFamily: 'rh',
@@ -99,7 +104,9 @@ class _ListsState extends State<Lists> {
           ),
         ),
       ),
-      color: widget.co == 'NO' ? Color.fromARGB(255, 121, 13, 6) : Colors.black,
+      color: widget.co == 'NO'
+          ? const Color.fromARGB(255, 1, 67, 75)
+          : const Color.fromARGB(255, 0, 151, 167),
     );
   }
 }

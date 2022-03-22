@@ -14,9 +14,9 @@ class _SplashState extends State<Splash> {
   @override
   void initState() {
     super.initState();
-    Timer(Duration(seconds: 5), () {
+    Timer(const Duration(seconds: 5), () {
       Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (ctx) {
-        return MyHomePage();
+        return const MyHomePage();
       }));
     });
   }
@@ -30,17 +30,17 @@ class _SplashState extends State<Splash> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Align(
+            const Align(
                 alignment: Alignment.topLeft,
                 child: Icon(
                   FontAwesomeIcons.quoteLeft,
                   size: 30.0,
                   color: Colors.grey,
                 )),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
-            Text(
+            const Text(
                 "If you do not do something, maybe you will not succeed, but you will not lose",
                 style: TextStyle(
                     color: Color.fromARGB(255, 44, 44, 44),
