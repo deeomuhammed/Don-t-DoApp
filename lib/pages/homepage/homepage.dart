@@ -14,9 +14,11 @@ class AddThings extends StatefulWidget {
 }
 
 class _AddThingsState extends State<AddThings> {
-  String text1 = 'Did you do this';
-  bool checkCol = true;
-  Color color = Colors.black;
+  String c = '';
+  hello() {
+    print('+++++++++++++++++++++${c}********************************');
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -48,7 +50,7 @@ class _AddThingsState extends State<AddThings> {
               SizedBox(
                 height: 9,
               ),
-              TopCard(),
+              TopCard(status: hello()),
               SizedBox(
                 height: 10,
               ),
@@ -116,11 +118,13 @@ class _AddThingsState extends State<AddThings> {
                                           foregroundColor:
                                               Color.fromARGB(255, 238, 19, 4),
                                           icon: Icons.delete,
-                                          label: '',
+                                          label: 'Delete',
                                         ),
                                       ]),
                                   key: Key(e.id),
                                   child: Lists(
+                                    co: e['Status'],
+                                    id: c = e.id,
                                     listName: e['TodosList'],
                                   )),
                             );

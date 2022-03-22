@@ -1,11 +1,15 @@
 import 'package:awesome_icons/awesome_icons.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class Lists extends StatefulWidget {
   final String listName;
-
+  String co;
+  String id;
   Lists({
     required this.listName,
+    required this.id,
+    required this.co,
   });
 
   @override
@@ -13,8 +17,9 @@ class Lists extends StatefulWidget {
 }
 
 class _ListsState extends State<Lists> {
+  Color bla = Colors.red;
+  Color re = Colors.black;
   bool checkColor = true;
-  Color color = Colors.black;
   String text1 = 'Did you do this';
   int percentage = 0;
   @override
@@ -44,17 +49,23 @@ class _ListsState extends State<Lists> {
                                 onPressed: () {
                                   setState(() {
                                     checkColor = !checkColor;
+                                    print(checkColor);
+
                                     if (checkColor == true) {
-                                      color = Colors.black;
-                                      text1 = 'Did you do this';
+                                      FirebaseFirestore.instance
+                                          .collection('Todos')
+                                          .doc(widget.id)
+                                          .update({'Status': 'YES'});
                                     } else {
-                                      text1 = 'Did you Recover this?';
-                                      color = Color.fromARGB(255, 121, 13, 6);
+                                      FirebaseFirestore.instance
+                                          .collection('Todos')
+                                          .doc(widget.id)
+                                          .update({'Status': 'NO'});
                                     }
                                   });
                                   Navigator.of(ctx).pop();
                                 },
-                                child: Text('yes')),
+                                child: Text('YES')),
                             ElevatedButton(
                               style: ButtonStyle(
                                   backgroundColor:
@@ -62,10 +73,12 @@ class _ListsState extends State<Lists> {
                               onPressed: () {
                                 Navigator.of(ctx).pop();
                               },
-                              child: Text('No'),
+                              child: Text('NO'),
                             ),
                           ],
-                          title: Text(text1),
+                          title: Text(widget.co == 'NO'
+                              ? 'Did you Recover this?'
+                              : 'Did you do this'),
                         );
                       });
                 }),
@@ -78,7 +91,9 @@ class _ListsState extends State<Lists> {
                   fontWeight: FontWeight.w100),
             ),
           ),
-          color: color,
+          color: widget.co == 'NO'
+              ? Color.fromARGB(255, 121, 13, 6)
+              : Colors.black,
         ));
   }
 }

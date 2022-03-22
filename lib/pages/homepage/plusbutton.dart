@@ -55,7 +55,10 @@ class PlusButton extends StatelessWidget {
                         onPressed: () {
                           if (dontdo.text.isNotEmpty) {
                             FirebaseFirestore.instance.collection('Todos').add(
-                              {'TodosList': dontdo.text},
+                              {
+                                'TodosList': dontdo.text,
+                                'Status': 'YES',
+                              },
                             );
                           }
 

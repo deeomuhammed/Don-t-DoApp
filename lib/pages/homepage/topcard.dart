@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:todoapp/pages/homepage/transactions.dart%2015-55-09-164.dart';
 
 class TopCard extends StatelessWidget {
+  String status;
   int? fail;
   int? success;
+
+  TopCard({required this.status});
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -11,14 +16,14 @@ class TopCard extends StatelessWidget {
         height: 100,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
-          color: Colors.grey[350],
-          boxShadow: [
+          color: Color.fromRGBO(214, 214, 214, 1),
+          boxShadow: const [
             BoxShadow(
                 color: Colors.black54,
                 offset: Offset(4, 4),
                 blurRadius: 15,
                 spreadRadius: 1),
-            const BoxShadow(
+            BoxShadow(
                 color: Colors.white,
                 offset: Offset(-4, -4),
                 blurRadius: 15,
@@ -33,7 +38,7 @@ class TopCard extends StatelessWidget {
             children: [
               Column(
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   Column(children: [
@@ -55,14 +60,14 @@ class TopCard extends StatelessWidget {
                             shape: BoxShape.circle,
                             color: Colors.grey[200],
                           ),
-                          child: Center(
+                          child: const Center(
                             child: Icon(
                               Icons.arrow_upward,
                               color: Colors.green,
                             ),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 6,
                         ),
                         Text(
