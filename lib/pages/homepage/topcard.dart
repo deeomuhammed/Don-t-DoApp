@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:todoapp/pages/homepage/transactions.dart%2015-55-09-164.dart';
 
 class TopCard extends StatelessWidget {
-  String status;
+  int status;
   int? fail;
   int? success;
 
@@ -10,6 +10,7 @@ class TopCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print('object');
     return Padding(
       padding: const EdgeInsets.all(2),
       child: Container(
@@ -105,7 +106,7 @@ class TopCard extends StatelessWidget {
                     Row(
                       children: [
                         Text(
-                          '${fail}%',
+                          '${status}%',
                           style: TextStyle(
                               fontFamily: 'rh',
                               fontSize: 13,

@@ -14,10 +14,7 @@ class AddThings extends StatefulWidget {
 }
 
 class _AddThingsState extends State<AddThings> {
-  String c = '';
-  hello() {
-    print('+++++++++++++++++++++${c}********************************');
-  }
+  static int c = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +47,7 @@ class _AddThingsState extends State<AddThings> {
               SizedBox(
                 height: 9,
               ),
-              TopCard(status: hello()),
+              TopCard(status: c),
               SizedBox(
                 height: 10,
               ),
@@ -123,8 +120,9 @@ class _AddThingsState extends State<AddThings> {
                                       ]),
                                   key: Key(e.id),
                                   child: Lists(
+                                    i: c = e['num'],
                                     co: e['Status'],
-                                    id: c = e.id,
+                                    id: e.id,
                                     listName: e['TodosList'],
                                   )),
                             );

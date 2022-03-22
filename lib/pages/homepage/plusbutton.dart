@@ -58,6 +58,7 @@ class PlusButton extends StatelessWidget {
                               {
                                 'TodosList': dontdo.text,
                                 'Status': 'YES',
+                                'num': 1
                               },
                             );
                           }
