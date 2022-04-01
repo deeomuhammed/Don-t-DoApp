@@ -1,9 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 class PlusButton extends StatelessWidget {
-  PlusButton({Key? key}) : super(key: key);
-
   TextEditingController dontdo = TextEditingController();
 
   @override
@@ -66,7 +65,7 @@ class PlusButton extends StatelessWidget {
                               {
                                 'TodosList': dontdo.text,
                                 'Status': 'YES',
-                                'num': 1
+                                'num': 1,
                               },
                             );
                           }

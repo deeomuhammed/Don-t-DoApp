@@ -1,12 +1,14 @@
 import 'package:awesome_icons/awesome_icons.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:todoapp/pages/homepage/homepage.dart';
 
 class Lists extends StatefulWidget {
   final String listName;
   String co;
   String id;
   int i;
+
   Lists({
     required this.listName,
     required this.id,
@@ -48,16 +50,16 @@ class _ListsState extends State<Lists> {
                                 const Color.fromARGB(255, 1, 67, 75),
                               )),
                               onPressed: () {
+                                Navigator.of(ctx).pop();
                                 setState(() {
                                   checkColor = !checkColor;
-
                                   if (checkColor == true) {
                                     FirebaseFirestore.instance
                                         .collection('Todos')
                                         .doc(widget.id)
                                         .update({
                                       'Status': 'YES',
-                                      'num': widget.i + 1
+                                      'num': 1,
                                     });
                                   } else {
                                     FirebaseFirestore.instance
@@ -65,11 +67,10 @@ class _ListsState extends State<Lists> {
                                         .doc(widget.id)
                                         .update({
                                       'Status': 'NO',
-                                      'num': widget.i - 1
+                                      'num': 0,
                                     });
                                   }
                                 });
-                                Navigator.of(ctx).pop();
                               },
                               child: const Text('YES')),
                           ElevatedButton(
@@ -95,7 +96,7 @@ class _ListsState extends State<Lists> {
                     });
               }),
           title: Text(
-            widget.listName,
+            widget.listName.toString(),
             style: const TextStyle(
                 color: Colors.white,
                 fontSize: 17,

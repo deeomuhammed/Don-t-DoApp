@@ -1,9 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+
 import 'package:todoapp/pages/homepage/plusbutton.dart';
-import 'package:todoapp/pages/homepage/topcard.dart';
-import 'package:todoapp/pages/homepage/transactions.dart%2015-55-09-164.dart';
+
+import 'package:todoapp/pages/homepage/transactions.dart';
 import 'package:todoapp/pages/settings/settings.dart';
 
 class AddThings extends StatefulWidget {
@@ -14,10 +15,12 @@ class AddThings extends StatefulWidget {
 }
 
 class _AddThingsState extends State<AddThings> {
-  static int c = 1;
-
+  num number = 0;
+  int length = 0;
+  @override
   @override
   Widget build(BuildContext context) {
+    ValueNotifier<double> h = ValueNotifier(0);
     return SafeArea(
       child: Scaffold(
         backgroundColor: const Color.fromARGB(255, 0, 172, 193).withOpacity(.2),
@@ -25,35 +28,13 @@ class _AddThingsState extends State<AddThings> {
           padding: const EdgeInsets.all(25),
           child: Column(
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  IconButton(
-                    onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (ctx) {
-                        return Setting();
-                      }));
-                    },
-                    icon: const Icon(
-                      Icons.settings,
-                      color: Color.fromARGB(255, 1, 67, 75),
-                    ),
-                  )
-                ],
-              ),
               const SizedBox(
                 height: 2,
               ),
-              const Text('Don\'t  do  ',
-                  style: TextStyle(
-                    fontFamily: 'rh',
-                    fontSize: 30,
-                    color: Color.fromARGB(255, 1, 67, 75),
-                  )),
+              const logotext(),
               const SizedBox(
                 height: 9,
               ),
-              TopCard(),
               const SizedBox(
                 height: 10,
               ),
@@ -66,8 +47,14 @@ class _AddThingsState extends State<AddThings> {
                       if (!snapshot.hasData) {
                         return const Center(child: CircularProgressIndicator());
                       } else {
+                        number = 0;
+
                         return ListView(
                           children: snapshot.data!.docs.map((e) {
+                            //adding
+                            number += e['num'];
+                            length = snapshot.data!.docs.length;
+
                             return Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Slidable(
@@ -76,6 +63,7 @@ class _AddThingsState extends State<AddThings> {
                                       children: [
                                         SlidableAction(
                                           onPressed: (context) {
+                                            // print(numb);
                                             showDialog(
                                                 context: context,
                                                 builder: (ct) {
@@ -126,7 +114,7 @@ class _AddThingsState extends State<AddThings> {
                                       ]),
                                   key: Key(e.id),
                                   child: Lists(
-                                    i: c = e['num'],
+                                    i: e['num'],
                                     co: e['Status'],
                                     id: e.id,
                                     listName: e['TodosList'],
@@ -145,6 +133,48 @@ class _AddThingsState extends State<AddThings> {
           ),
         ),
       ),
+    );
+  }
+}
+
+class logotext extends StatelessWidget {
+  const logotext({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Text('Don\'t Do',
+        style: TextStyle(
+          fontFamily: 'rh',
+          fontSize: 30,
+          color: Color.fromARGB(255, 1, 67, 75),
+        ));
+  }
+}
+
+class settings extends StatelessWidget {
+  const settings({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        IconButton(
+          onPressed: () {
+            Navigator.push(context, MaterialPageRoute(builder: (ctx) {
+              return Setting();
+            }));
+          },
+          icon: const Icon(
+            Icons.settings,
+            color: Color.fromARGB(255, 1, 67, 75),
+          ),
+        )
+      ],
     );
   }
 }
